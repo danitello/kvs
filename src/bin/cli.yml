@@ -1,0 +1,30 @@
+name: kvs
+settings:
+        - VersionlessSubcommands
+        - SubcommandRequiredElseHelp
+subcommands:
+                - get:
+                        about: Gets the value at the given key
+                        args:
+                                - key:
+                                        help: key string
+                                        required: true
+                                        index: 1
+                - set:
+                        about: Sets the given value at the given key
+                        args:
+                                - key:
+                                        help: key string
+                                        required: true
+                                        index: 1
+                                - value:
+                                        help: value string
+                                        required: true
+                                        index: 2
+                - rm:
+                        about: Removes the given key
+                        args:
+                                - key:
+                                        help: key string
+                                        required: true
+                                        index: 1
