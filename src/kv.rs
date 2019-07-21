@@ -1,19 +1,28 @@
-#[derive(Copy, Clone)]
-pub struct KvStore {}
+use std::collections::HashMap;
+
+pub struct KvStore {
+   store: HashMap<String, String> 
+}
 
 impl KvStore {
     pub fn new() -> KvStore {
-        KvStore {}
+        KvStore {
+            store: HashMap::new()
+        }
     }
 
-    pub fn get(self, _key: String) -> Option<String>{
-        Some("helloworld".to_string())
+    pub fn get(&mut self, key: String) -> Option<String>{
+        match self.store.get(&key) {
+            Some(value) => Some(value.to_string()),
+            _ => None
+        }
     }
 
-    pub fn set(self, _key: String, _value: String) -> String {
-        "helloworld".to_string()
+    pub fn set(&mut self, key: String, value: String) {
+        self.store.insert(key, value);
     }
 
-    pub fn remove(self, _key: String){
+    pub fn remove(&mut self, key: String){
+        self.store.remove(&key);
     }
 }
